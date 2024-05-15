@@ -1,9 +1,11 @@
 ---
 # try also 'default' to start simple
 theme: seriph
+themeConfig:
+  primary: '#ee0000'
 # random image from a curated Unsplash collection by Anthony
 # like them? see https://unsplash.com/collections/94734566/slidev
-background: ./logo.png
+background: images/openshift.svg
 # some information about your slides, markdown enabled
 title: Red Hat OpenShift
 info: |
@@ -23,6 +25,7 @@ transition: slide-left
 # enable MDC Syntax: https://sli.dev/guide/syntax#mdc-syntax
 mdc: true
 hideInToc: true
+
 ---
 
 # Red Hat OpenShift
@@ -37,56 +40,55 @@ The last comment block of each slide will be treated as slide notes. It will be 
 ---
 layout: two-cols
 layoutClass: gap-16
+hideInToc: true
 ---
 
 # Table of contents
 
 
-<Toc minDepth="1" maxDepth="3"></Toc>
+<Toc minDepth="1" maxDepth="1"></Toc>
+
 
 ---
-transition: fade-out
+transition: slide-up
+level: 1
+layout: section
 ---
-
-# Intro
-
-This provides a summary of the topic
+# About Red Hat & OpenShift
 
 ---
 transition: slide-up
 level: 2
 layout: image-right
 image: https://upload.wikimedia.org/wikipedia/commons/d/d8/Red_Hat_logo.svg 
-backgroundSize: contain
+backgroundSize: 15vw
 ---
 
-## What is RedHat
+## What is Red Hat
 
 - Leading provider of different open-source solutions for enterprises
-- Red Hat's portfolio also includes middleware, storage, virtualization, and cloud technologies, catering to various enterprise needs.
+
+- Portfolio also includes middleware, storage, virtualization, and cloud technologies, catering to various enterprise needs.
+
 - It follows an open-source business model, providing access to its source code and collaborating with the community to develop and enhance its products.
+
 - In 2019, Red Hat was acquired by IBM, but it continues to operate as a separate entity within the IBM Cloud and Cognitive Software division.
 
 
 ---
 transition: slide-up
 level: 2
-layout: two-cols
+color: white
+# layout: three-cols
+
 ---
 
-## Notable RedHat Products
+## Notable Red Hat Products
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/a/a2/Red_Hat_Enterprise_Linux_logo.svg" v-bind="props"/>
+<div class="grid grid-cols-3 gap-4">
+<div>
 
-- Commercial open-source Linux distribution
-
-- stable and secure operating system platform with long-term support, suitable for mission-critical applications and infrastructure.
-
-- Fedora Linux and CentOS Stream as upstream sources
-
-::right::
-
-<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQhoYUzCXxIkqgwFDAyA8PukHK_T5JgNPc08QdAsvP&s" v-bind="props"/>
+<img src="images/ansible2.svg" v-bind="props" style="height: 11%;"/>
 
 - open-source automation tool
 
@@ -94,16 +96,52 @@ layout: two-cols
 
 - uses a simple and human-readable syntax (YAML) and operates agentlessly, communicating with remote nodes via SSH
 
+</div>
+<div>
+
+<img src="images/rhel.svg" v-bind="props" style="height: 10%;"/>
+
+- Commercial open-source Linux distribution
+
+- stable and secure operating system platform with long-term support, suitable for mission-critical applications and infrastructure.
+
+- Fedora Linux and CentOS Stream as upstream sources
+
+
+</div>
+<div>
+
+<img src="images/quay.svg" style="height: 10%;" />
+
+- highly available and scalable container image registry solution designed for enterprises 
+
+- offers advanced features such as role-based access control (RBAC), image scanning for vulnerabilities and compliance, content signing, and replication
+
+
+</div>
+</div>
+
+
+
 
 ---
 level: 2
+layout: image-left
+image: images/openshift-named.svg
+backgroundSize: 15vw
 ---
 
 ## What is Red Hat OpenShift?
 
+<br/>
+<br/>
+
 - Hybrid cloud application platform
+
 - Built around Linux containers
+
 - Orchestrated and managed by Kubernetes (RHOS builds upon Kubernetes but adds enterprise features and support, including additional tools and services)
+
 - foundation of Red Hat Enterprise Linux (RHEL)
 
 
@@ -113,21 +151,54 @@ level: 2
 
 ## Red Hat OpenShift vs. Kubernetes
 
+
 |                                        | Kubernetes | OpenShift |
 |----------------------------------------|------------|-----------|
 | Multi-container, multi-host scheduling | ✅          | ✅         |
 | Self-service provisioning              | ✅          | ✅         |
 | Service discovery                      | ✅          | ✅         |
 | Persistent Storage                     | ✅          | ✅         |
-| Multi-tenancy                          |            | ✅         |
-| Networking (SDN)                       |            | ✅         |
-| Image Registry                         |            | ✅         |
-| Image Build Tools                      |            | ✅         |
-| Metrics                                |            | ✅         |
-| Log Aggregation                        |            | ✅         |
-| Ingress                                |            | ✅         |
-| UX: Console, Service Catalog, "oc"     |            | ✅         |
-| Secured by Default                     |            | ✅         |
+| Multi-tenancy                          | ❌          | ✅         |
+| Networking (SDN)                       | ❌          | ✅         |
+| Image Registry                         | ❌          | ✅         |
+
+
+---
+level: 2
+hideInToc: true
+---
+
+## Red Hat OpenShift vs. Kubernetes
+
+
+|                                        | Kubernetes | OpenShift |
+|----------------------------------------|------------|-----------|
+| Image Build Tools                      |  ❌        | ✅         |
+| Metrics                                |  ❌        | ✅         |
+| Log Aggregation                        |  ❌        | ✅         |
+| Ingress                                |  ❌        | ✅         |
+| UX: Console, Service Catalog, "oc"     |  ❌        | ✅         |
+| Secured by Default                     |  ❌        | ✅         |
+
+---
+level: 2
+---
+
+## OpenShift Deployments
+
+OpenShift can be deployed in the cloud, on-premise or hybrid. 
+
+- Red Hat OpenShift Container Platform (self-managed instance in the cloud or on-premise)
+
+- Red Hat OpenShift on AWS (ROSA)
+
+- Azure Red Hat OpenShift (ARO)
+
+- Red Hat OpenShift Container Platform on GCP
+
+- Red Hat OpenShift on IBM Cloud 
+
+
 
 ---
 level: 1
@@ -167,24 +238,9 @@ backgroundSize: 80%
 
 ## OpenShift Architecture
 
-
 ---
 level: 2
----
-
-## OpenShift Deployments
-
-OpenShift can be deployed in the cloud, on-premise or hybrid. 
-
-- Red Hat OpenShift on AWS (ROSA)
-- Azure Red Hat OpenShift (ARO)
-- Red Hat OpenShift Container Platform on GCP
-- Red Hat OpenShift on IBM Cloud 
-- Red Hat OpenShift Container Platform (self-managed instance in the cloud or on-premise)
-
-
----
-level: 2
+hide: true
 ---
 
 # How OpenShift works
@@ -202,20 +258,27 @@ level: 2
 level: 2
 ---
 
-## OpenShift Resources - Project
+## OpenShift Resources
+
+### Project
 
 Comparable to Kubernetes Namespace, but with additional administrative controls:
 
-- Isolation: Provide a level of isolation and resource management within an OpenShift cluster (sandboxed environment)
-- Fine grained control over permissions: Own set of access controls and security policies
-- Quotas and limits: Administrators can set limits on the amount of CPU, memory, storage and other resources that each project can consume
-- Multi-Tenancy support: organizations can host multiple teams or applications within the same cluster while maintaining isolation and security between them
+- **Isolation**: Provide a level of isolation and resource management within an OpenShift cluster (sandboxed environment)
+
+- Fine grained **control over permissions**: Own set of access controls and security policies
+
+- **Quotas and limits**: Administrators can set limits on the amount of CPU, memory, storage and other resources that each project can consume
+
+- **Multi-Tenancy support**: organizations can host multiple teams or applications within the same cluster while maintaining isolation and security between them
 
 
 ---
 level: 2
 ---
-## OpenShift Container Registry (OCR) / Quay
+## OpenShift Resources
+
+### Container Registry (OCR) / Quay
 
 - Integrated registry that provides a secure and centralized location for storing and managing container images
 
@@ -271,7 +334,7 @@ level: 3
 ---
 ## OpenShift Core Concepts - Builds
 
-A build is the process of transforming input parameters or source code into a result object (runnable image). A BuildConfig object is the definition of the entire build process.
+A build is the process of transforming input parameters or source code into a result object (runnable image). A `BuildConfig` object is the definition of the entire build process.
 
 OpenShift offers 3 different build strategies:
 
@@ -300,21 +363,67 @@ level: 3
 level: 1
 layout: section
 ---
-# Demo
+# Demo 1
 
-Deploy application in OpenSHift
+## Deploy full stack application in OpenShift
+
+---
+level: 1
+layout: section
+---
+# Red Hat OpenShift AI
+
+
+---
+level: 2
+---
+# What is Red Hat OpenShift AI?
+
+- flexible, scalable AI and ML platform that enables enterprises to create and deliver AI-enabled applications at scale across hybrid cloud environments.
+
+- Helps data scientists and developers to collaborate and move from experiment to production in a consistent environment quickly (**MLOps**)
+
+- Integrates familiar tools and libraries like Jupyter, TensorFlow, and PyTorch along with MLOps components for model serving and data science pipelines into a flexible UI
+
+---
+level: 2
+layout: image
+image: images/mlops.png
+backgroundSize: 80%
+---
+# Red Hat OpenShift AI & MLOps
+
+---
+level: 2
+layout: image
+image: images/mlops-example.png
+backgroundSize: 75%
+---
+# Red Hat OpenShift AI - Example Architecture
+
+---
+level: 1
+layout: section
+---
+# Demo 2
+
+## Deploy training & model serving project
 
 ---
 
 # Sources
 
 - https://www.openvirtualization.pro/red-hat-openshift-container-platform/
-
+- https://redhat-scholars.github.io/openshift-starter-guides/rhs-openshift-starter-guides/4.11/index.html
+- https://access.redhat.com/documentation/en-us/red_hat_openshift_ai_self-managed/2-latest/html/getting_started_with_red_hat_openshift_ai_self-managed/index
+- https://www.redhat.com/de/technologies/management/ansible
+- https://developers.redhat.com/developer-sandbox
+- https://access.redhat.com/documentation/en-us/builds_for_red_hat_openshift/1.0
 ---
 layout: center
 class: text-center
 ---
 
-# Learn More
+# Questions
 
-[Documentations](https://sli.dev) · [GitHub](https://github.com/slidevjs/slidev) · [Showcases](https://sli.dev/showcases.html)
+## Thanks for listening
