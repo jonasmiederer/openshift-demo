@@ -257,41 +257,8 @@ hide: true
 ---
 level: 2
 ---
-
-## OpenShift Resources
-
-### Project
-
-Comparable to Kubernetes Namespace, but with additional administrative controls:
-
-- **Isolation**: Provide a level of isolation and resource management within an OpenShift cluster (sandboxed environment)
-
-- Fine grained **control over permissions**: Own set of access controls and security policies
-
-- **Quotas and limits**: Administrators can set limits on the amount of CPU, memory, storage and other resources that each project can consume
-
-- **Multi-Tenancy support**: organizations can host multiple teams or applications within the same cluster while maintaining isolation and security between them
-
-
----
-level: 2
----
-## OpenShift Resources
-
-### Container Registry (OCR) / Quay
-
-- Integrated registry that provides a secure and centralized location for storing and managing container images
-
-- facilitates image promotion and lifecycle management by enabling users to tag, version, and promote container images across different environments 
-
-- seamlessly integrates with OpenShift Pipelines, allowing users to automate the build, test, and deployment processes for containerized applications. It provides native support for source-to-image (S2I) builds, Dockerfile builds, and image streams, enabling continuous integration and delivery (CI/CD) workflows.
-
-- Quay is a standalone enterprise-grade CR
-
----
-level: 2
----
-## OpenShift Web Console
+## OpenShift
+### Web Console
 
 - Feature-rich GUI to control the OpenShift instance itself as well as workloads and resources running on OpenShift
 
@@ -302,7 +269,8 @@ level: 2
 ---
 level: 2
 ---
-## OpenShift CLI
+## OpenShift
+### CLI
 
 `oc`: CLI tool to manage OpenShift Container Platform projects and other resources from a terminal
 
@@ -317,7 +285,8 @@ Examples:
 ---
 level: 2
 ---
-## OpenShift Core Concepts
+## OpenShift
+### Core Concepts
 
 Based on Kubernets, extended by OpenShift to provide a more feature-rich development lifecycle platform
 
@@ -332,20 +301,26 @@ Based on Kubernets, extended by OpenShift to provide a more feature-rich develop
 ---
 level: 3
 ---
-## OpenShift Core Concepts - Builds
 
-A build is the process of transforming input parameters or source code into a result object (runnable image). A `BuildConfig` object is the definition of the entire build process.
+## OpenShift
 
-OpenShift offers 3 different build strategies:
+### Project
 
-- **Docker build**: Expects a repository with a Dockerfile and all required artifacts to produce a Docker image
-- **S2I build**: Source-to-Image build is a tool for building Docker-formatted container images by injecting application source into a container image and assembling a new image
-- **Custom build**: allows developers to define a specific builder image responsible for the whole process. The resulting objects are whatever the builder image author has specified
+Comparable to Kubernetes Namespace, but with additional administrative controls:
+
+- **Isolation**: Provide a level of isolation and resource management within an OpenShift cluster (sandboxed environment)
+
+- Fine grained **control over permissions**: Own set of access controls and security policies
+
+- **Quotas and limits**: Administrators can set limits on the amount of CPU, memory, storage and other resources that each project can consume
+
+- **Multi-Tenancy support**: organizations can host multiple teams or applications within the same cluster while maintaining isolation and security between them
 
 ---
 level: 3
 ---
-## OpenShift Core Concepts - Deployments
+## OpenShift 
+### Deployments
 
 - **Deployment**
   - Native Kubernetes object
@@ -357,6 +332,36 @@ level: 3
   - OpenShift specific resource
   - Provides additional features and capabilities tailored for managing applications within OS
   - e.g. can trigger new deployments with `ConfigChange` or `ImageChange` 
+
+---
+level: 3
+---
+## OpenShift Resources
+
+### Container Registry (OCR) / Quay
+
+- Integrated registry that provides a secure and centralized location for storing and managing container images
+
+- facilitates image promotion and lifecycle management by enabling users to tag, version, and promote container images across different environments 
+
+- seamlessly integrates with OpenShift Pipelines, allowing users to automate the build, test, and deployment processes for containerized applications. It provides native support for source-to-image (S2I) builds, Dockerfile builds, and image streams, enabling continuous integration and delivery (CI/CD) workflows.
+
+- Quay is a standalone enterprise-grade CR
+
+
+---
+level: 3
+---
+## OpenShift Resources
+### Builds
+
+A build is the process of transforming input parameters or source code into a result object (runnable image). A `BuildConfig` object is the definition of the entire build process.
+
+OpenShift offers 3 different build strategies:
+
+- **Docker build**: Expects a repository with a Dockerfile and all required artifacts to produce a Docker image
+- **S2I build**: Source-to-Image build is a tool for building Docker-formatted container images by injecting application source into a container image and assembling a new image
+- **Custom build**: allows developers to define a specific builder image responsible for the whole process. The resulting objects are whatever the builder image author has specified
 
 
 ---
